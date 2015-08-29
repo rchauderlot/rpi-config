@@ -28,7 +28,7 @@ Congratualtions! The IR receiver is working.
 
 You can generate a config file for it using the *irrecord* tool. The process is as follows:
 
-* Turn the remote off on XMBC using Rasbmc as we did before using 'mode2'.
+* Turn the lircd off killing the process like in the previous step.
 * Rename the existing lircd.conf out of the way
 Type the command 'irrecord –list-namespace'. This will tell you the allowed key names that you can use when prompted.
 * Type the command 'irrecord -d /dev/lirc0 ~/lircd.conf'
