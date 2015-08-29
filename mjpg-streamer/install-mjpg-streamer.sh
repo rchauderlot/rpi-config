@@ -1,10 +1,7 @@
-sudo apt-get install libjpeg8-dev
-sudo apt-get install imagemagic
-sudo apt-get install subversion
-sudo apt-get install libjpeg62-dev
-sudo apt-get install cmake
+sudo apt-get install make cmake imagemagic subversion libv4l-dev v4l-utils libjpeg8-dev libjpeg62-dev libjpeg62-turbo-dev 
 git clone https://github.com/jacksonliam/mjpg-streamer.git ~/mjpg-streamer
-cd mjpg-streamer/mjpg-streamer-experimental/
+cd ~/mjpg-streamer/mjpg-streamer-experimental/
 make clean all
-sudo mkdir -p /opt/mjpg-streamer
-sudo rm -rf /opt/mjpg-streamer
+#sudo mkdir -p /opt/mjpg-streamer
+#sudo rm -rf /opt/mjpg-streamer/*
+#make install
