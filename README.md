@@ -19,7 +19,7 @@ By using this command:
 </code></pre>
 
 ###4. Configure the remote
-In my case I built a IR recevier using a TSOP4838 connected to the GPIO pin 18 folloing the instrucuctions in the raspberry pi learn page [Using an IR Remote with a Raspberry Pi Media Center](https://learn.adafruit.com/using-an-ir-remote-with-a-raspberry-pi-media-center/overview). But, I've just back-up that info [here]() just in case.
+In my case I built a IR recevier using a TSOP4838 connected to the GPIO pin 18 folloing the instrucuctions in the raspberry pi learn page [Using an IR Remote with a Raspberry Pi Media Center](https://learn.adafruit.com/using-an-ir-remote-with-a-raspberry-pi-media-center/overview). But, I've just back-up that info [here](lircd/README.md) just in case.
 
 This setup is supported by the OSMC distribution out of the box, but if you need to use any other pin you could choose it in the menu *My OSMC* > *Pi Configuration* > *Hardware Support* > *gpio_in_pin*. If the GPIO is not configure we could just enable in *My OSMC* > *Pi Configuration* > *Hardware Support* > *Enable LIRC GPIO support*
 
@@ -30,8 +30,8 @@ I've also uploaded the [lircd.conf](lircd/lircd.conf) file for my Samsung TV rem
 ###5. Install the MPEG-2 and VC-1 license codes
 
 We just need to add two lines to the *config.txt* file in the SD filesystem root directory.
-<pre><code>decode\_MPG2=0000000000
-decode\_WVC1=0000000000
+<pre><code>decode_MPG2=0000000000
+decode_WVC1=0000000000
 </code></pre>
 The 0000000000 portion of the license is your unique 10-digit alphanumeric license code.
 
@@ -48,7 +48,7 @@ Check if is there any update availabe by: *My OSMC* > *Updates* > *Manual Contro
 
 ###7. Install PlexBMC
 
-Install the PleXBMC plugin to integrate the XBMC installed in OSMC with my [PLEX Media Server](https://plex.tv/) installed in my main computer (maybe installed in a NAS in the future). Full instructions could be found in the [kodi plugin wiki page](http://kodi.wiki/view/Add-on:PleXBMC), but these are the main steps:
+Install the PleXBMC plugin to integrate the XBMC installed in OSMC with my [PLEX Media Server](https://plex.tv/) installed in my main computer (maybe installed in a NAS in the future). Full instructions could be found in the [kodi plugin wiki page](http://kodi.wiki/view/Add-on:PleXBMC), but these are the main steps:
 
 1. Fetch the PleXBMC repository file in a ssh session by executing the following command:
 <pre><code>wget http://hippojay.github.io/repository.plexbmc.addons/download/repository.plexbmc.addons/repository.plexbmc.addons-3.0.0.zip
