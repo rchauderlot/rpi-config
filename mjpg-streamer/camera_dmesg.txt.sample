@@ -1,0 +1,10 @@
+[   83.969992] usb 1-1.4: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   83.970009] usb 1-1.4: Product: USB2.0 Camera
+[   83.970026] usb 1-1.4: Manufacturer: Etron Technologies
+[   84.016985] media: Linux media interface: v0.10
+[   84.036648] Linux video capture interface: v2.00
+[   84.065070] uvcvideo: Found UVC 1.00 device USB2.0 Camera (1e4e:0100)
+[   84.070188] uvcvideo: UVC non compliance - GET_DEF(PROBE) not supported. Enabling workaround.
+[   84.071881] input: USB2.0 Camera as /devices/platform/bcm2708_usb/usb1/1-1/1-1.4/1-1.4:1.0/input/input1
+[   84.072321] usbcore: registered new interface driver uvcvideo
+[   84.072339] USB Video Class driver (1.1.1)

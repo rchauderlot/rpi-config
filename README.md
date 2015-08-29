@@ -60,26 +60,27 @@ Install the PleXBMC plugin to integrate the XBMC installed in OSMC with my [PLEX
 
 4. Install PleXBMC Helper : *Settings* > *Add-ons* > *Get Add-ons* > *PleXBMC Add-ons for XBMC* > *Services* > *PleXBMC Helper* > *Install*
 
-###8. Install the Amber skin
+5. Install the Amber skin. This skin is integrated with PleXBMC including a special mode to be optimized for using that plugin. Go to *Settings* > *Apparence* > *Skin* > *Skin* > *Get more..*, find the *Ambar* skin and install and activate it.
 
-This skin is one of the most popular XBMC skin and it is integrated with PleXBMC including a special mode to be optimized for using the plugin.
+6. Exit to the main menu and choose the secondary option *Settings/Go to plex*
 
-1. Go to *Settings* > *Apparence* > *Skin* > *Skin* > *Get more..*, find the *Ambar* skin and install and activate it.
+###8. Install mjg-streamer
 
-2. Exit to the main menu and choose the secondary option *Settings/Go to plex*
+1. Install git:
 
-###9. Install git
-Update apt.
-<pre><code>sudo apt-get update
-</code></pre>
+	Update apt.
+	<pre><code>sudo apt-get update
+	</code></pre>
 
-And install git:
-<pre><code>sudo apt-get install git
-</code></pre>
+	And install git:
+	<pre><code>sudo apt-get install git
+	</code></pre>
 
 
-###10. Fetch the needed scripts
-Fetch the project in the raspberry pi. 
-<pre><code>git clone https://github.com/rchauderlot/rpi-config.git
-</code></pre>
+2. Fetch the project in the raspberry pi. 
+	<pre><code>git clone https://github.com/rchauderlot/rpi-config.git
+	</code></pre>
 
+3. Run the install script. 
+	<pre><code>rpi-config/mjpg-streamer/install-mjpg-streamer.sh
+	</code></pre>

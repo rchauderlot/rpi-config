@@ -1,0 +1,1 @@
+uvcdynctrl -f
