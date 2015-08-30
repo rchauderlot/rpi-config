@@ -1,0 +1,95 @@
+#!/bin/sh
+# /etc/init.d/mjpg-streamer
+### BEGIN INIT INFO
+# Provides:          mjpg-streamer
+# Required-Start:    $network
+# Required-Stop:     $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: mjpg-streamer
+# Description:       Streams video to http://localhost/?action=stream on Raspberry Pi
+### END INIT INFO
+
+# referenced: http://www.raspberrypi.org/phpBB3/viewtopic.php?t=31212&p=439248
+#
+# last update: 2015.08.31.
+
+set -e
+
+################
+# customize these:
+# mjpg_streamer's install location
+MJPG_STREAMER_INSTALL="/usr/local"
+# mjpg_streamer excutable's location
+MJPG_STREAMER_BINARY="$MJPG_STREAMER_INSTALL/bin/mjpg_streamer"
+
+test -x $MJPG_STREAMER_BINARY || exit 0
+
+. /lib/lsb/init-functions
+
+
+# mjpg_streamer libraries location
+MJPG_STREAMER_LIBS="$MJPG_STREAMER_INSTALL/lib"
+
+# streaming port
+MJPG_STREAMER_PORT="8080"
+
+# htmls and related files' location
+MJPG_STREAMER_WWW="$MJPG_STREAMER_INSTALL/www"
+
+# video device
+DEVICE_IN="/dev/video0"
+
+# video settings
+#RESOLUTION="640x480"
+#FPS="-f 30"
+RESOLUTION="320x240"
+FPS="-f 30"
+
+# YUYV format
+YUYV="-y"
+
+# disable controls
+CONTROLS="-n"
+
+# authentication
+#USERNAME="pi"
+#PASSWORD="raspberry"
+if [ ! -z $USERNAME ] && [ ! -z $PASSWORD ]; then
+    AUTH="-c $USERNAME:$PASSWORD"
+else
+    AUTH=""
+fi
+
+# LED blink
+LED="off"       # on/off/blink/auto (may not work on rpi camera modules)
+
+# plugin
+PLUGIN_IN="$MJPG_STREAMER_LIBS/input_uvc.so -d $DEVICE_IN -r $RESOLUTION $FPS $YUYV -l $LED $CONTROLS"
+PLUGIN_OUT="$MJPG_STREAMER_LIBS/output_http.so -p $MJPG_STREAMER_PORT -w $MJPG_STREAMER_WWW $CONTROLS $AUTH"
+
+case "$1" in
+    start)
+	log_daemon_msg "Starting mjpg-streamer service" "mjpg-streamer" 
+	start-stop-daemon --start --quiet --oknodo --exec $MJPG_STREAMER_BINARY -- -i "$PLUGIN_IN" -o "$PLUGIN_OUT" -b
+	log_end_msg $?
+  	;;
+    stop)
+	log_daemon_msg "Stopping mjpg-streamer service" "mjpg-streamer" 
+	start-stop-daemon --stop --quiet --oknodo --exec $MJPG_STREAMER_BINARY
+	log_end_msg $?
+	;;
+    restart|force-reload)
+	$0 stop && sleep 2 && $0 start
+  	;;
+    status)
+	status_of_proc $MJPG_STREAMER_BINARY mjpg-streamer && exit 0 || exit $?
+	;;
+    *)
+	echo "Usage: $0 {start|stop|status|restart|force-reload}"
+	exit 1
+	;;
+esac
+
+exit 0
+
