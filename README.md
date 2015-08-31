@@ -27,6 +27,10 @@ At this point we only need to select the remote key map we want to use in the me
 
 I've also uploaded the [lircd.conf](lircd/lircd.conf) file for my Samsung TV remote just in case I'll need to use another Raspberry Pi distribution that has not it included.
 
+To install a custom configuration in the OSMC distribution you could install it by running the following commands and selecting as it were a native remote as descrived avobe.
+<pre><code>sudo cp rpi-config/lircd/lircd.conf /etc/lirc/custom-samsung-lircd.conf
+sudo cp /etc/lirc/samsung-lircd.png /etc/lirc/custom-samsung-lircd.png</code></pre>
+
 ###5. Install the MPEG-2 and VC-1 license codes
 
 We just need to add two lines to the *config.txt* file in the SD filesystem root directory.
@@ -84,3 +88,12 @@ Install the PleXBMC plugin to integrate the XBMC installed in OSMC with my [PLEX
 3. Run the install script. 
 	<pre><code>rpi-config/mjpg-streamer/install-mjpg-streamer.sh
 	</code></pre>
+	
+4. Configure the previous script using the info provided by the following script until you get the mjpg-streamer working.
+	<pre><code>rpi-config/mjpg-streamer/list_webcam_formats.sh</code></pre>
+	
+5. Configure the script located at *rpi-config/mjpg-streamer/init/mjpg-streamer* as well and install the service by executing the following command:
+	<pre><code>rpi-config/mjpg-streamer/install-mjpg-streamer-service.sh</code></pre>
+
+6. Just in case you want to uninstall the service I made another srcipt for that purpose:
+	<pre><code>rpi-config/mjpg-streamer/uninstall-mjpg-streamer-service.sh</code></pre> 
